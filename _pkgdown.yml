@@ -10,3 +10,49 @@ navbar:
   right:
     - icon: fa-github
       href: https://github.com/ropensci/magick
+
+reference:
+- title: Example images
+  contents:
+  - '`wizard`'
+- title: Image Editing
+  contents:
+  - '`editing`'
+  - '`transform`'
+  - '`fx`'
+  - '`morphology`'
+  - '`effects`'
+  - '`color`'
+  - '`painting`'
+  - '`as_EBImage`'
+  - '`image_ggplot`'
+- title: Magick Graphics Device
+  contents:
+  - '`device`'
+- title: Image Attributes
+  contents:
+  - '`attributes`'
+- title: Image Composite
+  contents:
+  - '`composite`'
+- title: Image Frames and Animation
+  contents:
+  - '`animation`'
+  - '`video`'
+- title: Geometry helpers
+  contents:
+  - '`geometry`'
+- title: Image Processing
+  desc: ~
+  contents:
+  - '`analysis`'
+  - '`edges`'
+  - '`ocr`'
+  - '`segmentation`'
+  - '`thresholding`'
+- title: Software options
+  contents:
+  - '`options`'
+  - '`coder_info`'
+  - '`autoviewer`'
+
