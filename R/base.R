@@ -113,14 +113,32 @@ rep_magick_image <- function(x, times){
     invisible()
 }
 
+
+
 # This is registered as an S3 method in .onLoad()
-"knit_print.magick-image" <- function(x, ...){
+"knit_print.magick-image" <- function(x, ..., inline = FALSE){
   if(!length(x))
     return(invisible())
-  plot_counter <- utils::getFromNamespace('plot_counter', 'knitr')
+
   in_base_dir <- utils::getFromNamespace('in_base_dir', 'knitr')
   ext <- ifelse(all(tolower(image_info(x)$format) == "gif"), "gif", "png")
-  tmp <- knitr::fig_path(ext, number = plot_counter())
+
+  if (inline) {
+    fig_path <- knitr::opts_chunk$get("fig.path")
+    n <- knitr::opts_chunk$get("fig.inline.cur")
+    if (is.null(n)) {
+      n <- 1
+    }
+    knitr::opts_chunk$set("fig.inline.cur" = n+1)
+
+    tmp <- file.path(
+      fig_path,
+      paste0("inline-fig-", n, ".", ext)
+    )
+  } else {
+    plot_counter <- utils::getFromNamespace('plot_counter', 'knitr')
+    tmp <- knitr::fig_path(ext, number = plot_counter())
+  }
 
   # save relative to 'base' directory, see discussion in #110
   in_base_dir({
